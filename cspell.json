@@ -1,0 +1,26 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "antfu",
+    "Chronomancer",
+    "demi",
+    "Elementalist",
+    "iconify",
+    "intlify",
+    "pinia",
+    "pnpm",
+    "Sigilist",
+    "unocss",
+    "unplugin",
+    "Vite",
+    "vitejs",
+    "Vitesse",
+    "vitest",
+    "vueuse"
+  ],
+  "ignoreWords": [],
+  "import": []
+}

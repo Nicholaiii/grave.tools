@@ -1,5 +1,4 @@
 {
-  "cSpell.words": ["Vitesse", "Vite", "unocss", "vitest", "vueuse", "pinia", "demi", "antfu", "iconify", "intlify", "vitejs", "unplugin", "pnpm"],
   "i18n-ally.sourceLanguage": "en",
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": "locales",
@@ -47,5 +46,13 @@
     "json",
     "jsonc",
     "yaml"
-  ]
+  ],
+
+  "highlight.regexes": {
+    "(aligned)": [{ "color": "#46d655" }],
+    "(neutral)": [{ "color": "#a16e6e" }],
+    "(opposed)": [{ "color": "#fc5c74" }],
+    "(Schools)": [{ "gutterIconPath": "https://cdn-icons-png.freepik.com/512/1669/1669438.png" }]
+  }
+
 }
