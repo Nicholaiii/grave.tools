@@ -3,11 +3,11 @@
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
-  title: 'Vitesse',
+  title: 'grave.tools',
   meta: [
     {
       name: 'description',
-      content: 'Opinionated Vite Starter Template',
+      content: 'Frostgrave wizard and warband builder, create your team interactively.',
     },
     {
       name: 'theme-color',
