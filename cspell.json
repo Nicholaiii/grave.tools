@@ -1,6 +1,8 @@
 {
   "version": "0.2",
-  "ignorePaths": [],
+  "ignorePaths": [
+    "pnpm-lock.yaml"
+  ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
@@ -11,9 +13,16 @@
     "Frostgrave",
     "iconify",
     "intlify",
+    "nprogress",
     "pinia",
     "pnpm",
+    "shiki",
+    "shikijs",
     "Sigilist",
+    "sizecheck",
+    "taze",
+    "typecheck",
+    "unhead",
     "unocss",
     "unplugin",
     "Vite",
@@ -21,7 +30,8 @@
     "Vitesse",
     "vitest",
     "vueuse",
-    "warband"
+    "warband",
+    "webfont"
   ],
   "ignoreWords": [],
   "import": []
