@@ -36,4 +36,5 @@ export const of = (
 
 export const LearnedSpell = S.extend(Spell, S.Struct({
   currentCastingNumber: castingNumber,
+  customName: S.String,
 }))
