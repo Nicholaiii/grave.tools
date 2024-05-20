@@ -84,6 +84,7 @@
     "*": [
       "eslint --fix",
       "cspell --gitignore"
-    ]
+    ],
+    "*.{js,ts,vue}": "vitest related --run"
   }
 }
