@@ -8,6 +8,7 @@
     "Chronomancer",
     "demi",
     "Elementalist",
+    "Frostgrave",
     "iconify",
     "intlify",
     "pinia",
@@ -19,7 +20,8 @@
     "vitejs",
     "Vitesse",
     "vitest",
-    "vueuse"
+    "vueuse",
+    "warband"
   ],
   "ignoreWords": [],
   "import": []
