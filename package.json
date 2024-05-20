@@ -17,10 +17,13 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@effect/schema": "^0.67.9",
+    "@effect/vitest": "^0.5.1",
     "@unhead/vue": "^1.9.10",
     "@unocss/reset": "^0.60.2",
     "@vueuse/core": "^10.9.0",
     "@vueuse/head": "^2.0.0",
+    "effect": "^3.2.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.27",
@@ -41,6 +44,7 @@
     "@vue/test-utils": "^2.4.6",
     "critters": "^0.0.22",
     "cross-env": "^7.0.3",
+    "cspell": "^8.8.1",
     "cypress": "^13.9.0",
     "cypress-vite": "^1.5.0",
     "eslint": "^9.3.0",
@@ -65,7 +69,7 @@
     "vite-bundle-visualizer": "^1.2.1",
     "vite-plugin-inspect": "^0.8.4",
     "vite-plugin-pwa": "^0.20.0",
-    "vite-plugin-vue-devtools": "^7.2.0",
+    "vite-plugin-vue-devtools": "^7.2.1",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-webfont-dl": "^3.9.4",
     "vite-ssg": "^0.23.7",
@@ -77,6 +81,9 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*": [
+      "eslint --fix",
+      "cspell --gitignore"
+    ]
   }
 }
