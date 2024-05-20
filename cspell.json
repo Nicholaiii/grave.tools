@@ -1,7 +1,8 @@
 {
   "version": "0.2",
   "ignorePaths": [
-    "pnpm-lock.yaml"
+    "pnpm-lock.yaml",
+    "src/components.d.ts"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
