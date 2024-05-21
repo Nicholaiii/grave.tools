@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@effect/vitest'
 import * as S from '@effect/schema/Schema'
 import { pipe } from 'effect'
-import * as Spell from '../../src/mechanics/spell'
+import * as Spell from '~/mechanics/spell'
 
 const exceptAll = ([, exp]: [unknown, unknown]) => exp !== Spell.Spells.all
 

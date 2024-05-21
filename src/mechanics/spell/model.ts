@@ -15,7 +15,7 @@ export const castingNumber = S.Number.pipe(
 )
 
 export const Spell = S.Struct({
-  name: S.String,
+  name: S.NonEmpty,
   school: Schools.Enum,
   categories: S.Array(Categories),
   baseCastingNumber: castingNumber,
@@ -34,7 +34,7 @@ export const of = (
   categories,
 })
 
-export const LearnedSpell = S.extend(Spell, S.Struct({
+export const LearntSpell = S.extend(Spell, S.Struct({
   currentCastingNumber: castingNumber,
   customName: S.String,
 }))
