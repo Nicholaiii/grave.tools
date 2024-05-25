@@ -4,12 +4,13 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     formatters: true,
-    unocss: true,
+    unocss: false,
+    markdown: false,
   },
   {
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.json', './apps/*/tsconfig.json'],
+        project: ['./tsconfig.json'],
       },
     },
   },
@@ -29,7 +30,7 @@ export default antfu(
         named: 'always',
         asyncArrow: 'always',
       }],
-      'functional/no-classes': 'off',
+      'unicorn/throw-new-error': 'off',
     },
   },
 )

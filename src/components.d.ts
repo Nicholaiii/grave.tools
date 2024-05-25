@@ -7,11 +7,17 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppBar: typeof import('./components/Layout/AppBar.vue')['default']
+    AppSnackBar: typeof import('./components/Layout/AppSnackBar.vue')['default']
+    AssistantTips: typeof import('./components/Warband/Assistant/AssistantTips.vue')['default']
+    CreateWizard: typeof import('./components/Warband/Assistant/CreateWizard.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SelectSpells: typeof import('./components/Warband/Assistant/SelectSpells.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
+    WarbandEditor: typeof import('./components/Warband/WarbandEditor.vue')['default']
   }
 }

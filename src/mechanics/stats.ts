@@ -10,6 +10,7 @@ export const Stats = S.Struct({
     S.nonNegative(),
   ),
 })
+export type Stats = typeof Stats.Type
 
 export const of = (move: number, fight: number, shoot: number, armor: number, will: number, health: number) => Stats.make({
   move,

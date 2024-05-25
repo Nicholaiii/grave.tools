@@ -2,13 +2,37 @@ button:
   about: About
   back: Back
   go: GO
+  next: Next
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
+  close: Close
+
 intro:
   desc: Opinionated Vite Starter Template
   dynamic-route: Demo of dynamic route
   hi: Hi, {name}!
   aka: Also known as
   whats-your-name: What's your name?
+
 not-found: Not found
+
+error:
+  missing: Error message is missing
+  invalid-form: Form is invalid
+
+form:
+  required: Required
+
+warband:
+  create: Create a warband
+  create-wizard: Create a wizard
+  select-spells: Select spells
+  select-soldiers: Select soldiers
+  select-items: Select items
+  wizard: Wizard
+  spells: Spells
+  soldiers: Soldiers
+  items: Items
+  wizard-name: Wizard name
+  school: School

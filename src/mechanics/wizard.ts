@@ -11,3 +11,5 @@ export const Wizard = S.Struct({
   experience: S.optional(S.Number, { default: () => 0 }),
   spells: S.optional(S.Array(Spell.LearntSpell), { default: () => [] }),
 })
+
+export type Wizard = typeof Wizard.Type

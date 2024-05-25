@@ -19,6 +19,7 @@
   "dependencies": {
     "@effect/schema": "^0.67.9",
     "@effect/vitest": "^0.5.1",
+    "@mdi/font": "^7.4.47",
     "@unhead/vue": "^1.9.10",
     "@unocss/reset": "^0.60.2",
     "@vueuse/core": "^10.9.0",
@@ -26,10 +27,13 @@
     "effect": "^3.2.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
+    "ulid": "^2.3.0",
+    "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.27",
     "vue-demi": "^0.14.7",
     "vue-i18n": "^9.13.1",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vuetify": "^3.6.7"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.18.1",

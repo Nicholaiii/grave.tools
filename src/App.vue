@@ -11,19 +11,26 @@ useHead({
     },
     {
       name: 'theme-color',
-      content: () => isDark.value ? '#00aba9' : '#ffffff',
+      content: '#ffffff',
     },
   ],
   link: [
     {
       rel: 'icon',
       type: 'image/svg+xml',
-      href: () => preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg',
+      href: '/favicon-dark.svg',
     },
   ],
 })
+
+const errorStore = useErrorStore()
 </script>
 
 <template>
-  <RouterView />
+  <v-app>
+    <AppSnackBar
+      :text="errorStore.snackBar" @clear="errorStore.clearSnackbar"
+    />
+    <RouterView />
+  </v-app>
 </template>

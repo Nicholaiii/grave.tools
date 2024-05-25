@@ -5,10 +5,19 @@
     "src/components.d.ts"
   ],
   "dictionaryDefinitions": [],
-  "dictionaries": [],
+  "dictionaries": [
+    "en-gb",
+    "softwareTerms",
+    "typescript",
+    "npm",
+    "fonts",
+    "css",
+    "node"
+  ],
   "words": [
     "antfu",
     "Chronomancer",
+    "composables",
     "demi",
     "Elementalist",
     "Frostgrave",
@@ -30,8 +39,10 @@
     "vitejs",
     "Vitesse",
     "vitest",
+    "vuetify",
     "vueuse",
     "warband",
+    "warbands",
     "webfont"
   ],
   "ignoreWords": [],
