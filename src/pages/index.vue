@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import { get, set } from '@vueuse/core';
-import { Match } from 'effect';
-import { VStepper } from 'vuetify/components';
-import { School } from '~/mechanics/schools';
+import { get } from '@vueuse/core'
+import { Match } from 'effect'
+import { VStepper } from 'vuetify/components'
+import type { School } from '~/mechanics/schools'
 
 defineOptions({
   name: 'IndexPage',
 })
-
-const router = useRouter()
-function go () {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
 
 const { t } = useI18n()
 
@@ -34,13 +28,12 @@ const rules = computed(() => {
     1: [],
     2: get(currentStep) > 2 ? [() => assistant[2].valid] : undefined,
     3: [],
-    4: []
+    4: [],
   }
 })
 
 const onValidate = (step: Steps) => (value: boolean) => {
   assistant[step].valid = value
-  console.log(value)
 }
 
 const complete = (step: Steps) => assistant[step].complete = true
@@ -51,8 +44,7 @@ const complete = (step: Steps) => assistant[step].complete = true
 const name = ref<string>('')
 const school = ref<School>()
 const onValidateWizard = onValidate(1)
-const createWizard = (input: { name: string, school: School }) => {
-  alert(input)
+const _createWizard = (_input: { name: string, school: School }) => {
 }
 
 /**
@@ -69,7 +61,7 @@ const actionDisable = computed(() => matchStep().pipe(
   Match.when(2, () => assistant[2].valid ? 'prev' : true),
   Match.when(3, () => assistant[3].valid ? false : 'next'),
   Match.when(4, () => assistant[4].valid ? false : 'next'),
-  Match.orElse(() => true)
+  Match.orElse(() => true),
 ))
 
 const nextStep = () => stepper.value?.next()
@@ -84,28 +76,27 @@ const next = () => matchStep().pipe(
     complete(2)
     nextStep()
   }),
-  Match.orElse(() => nextStep())
+  Match.orElse(() => nextStep()),
 )
 
 const prevStep = () => stepper.value?.prev()
 const prev = () => matchStep().pipe(
   Match.when(3, prevStep),
   Match.when(4, prevStep),
-  Match.orElse(() => null)
+  Match.orElse(() => null),
 )
 
 /** 5: Profit! */
-
 </script>
 
 <template>
   <v-container fluid>
     <v-row align-content="center" justify="center">
       <v-col cols="3">
-        <AssistantTips :step="currentStep" :name :school/>
+        <AssistantTips :step="currentStep" :name :school />
       </v-col>
       <v-col cols="6">
-        <v-stepper v-model="currentStep" ref="stepper">
+        <VStepper ref="stepper" v-model="currentStep">
           <v-stepper-header>
             <template v-for="n in steps" :key="n">
               <v-stepper-item
@@ -116,24 +107,21 @@ const prev = () => matchStep().pipe(
                 "
                 :rules="rules[n]"
               >
-                {{ t(assistant[n].title)}}
+                {{ t(assistant[n].title) }}
               </v-stepper-item>
 
-              <v-divider :key="n" v-if="n < 4" />
-
-           </template>
+              <v-divider v-if="n < 4" :key="n" />
+            </template>
           </v-stepper-header>
 
           <v-stepper-window>
-
-            <v-stepper-window-item :value="1" :key="'1-content'">
+            <v-stepper-window-item key="1-content" :value="1">
               <CreateWizard v-model:name="name" v-model:school="school" @validate="onValidateWizard" />
             </v-stepper-window-item>
 
-            <v-stepper-window-item :value="2" :key="'2-content'">
+            <v-stepper-window-item key="2-content" :value="2">
               <SelectSpells :school @validate="onValidateSpells" />
             </v-stepper-window-item>
-
           </v-stepper-window>
 
           <v-stepper-actions
@@ -141,9 +129,9 @@ const prev = () => matchStep().pipe(
             @click:next="next"
             @click:prev="prev"
           />
-        </v-stepper>
+        </VStepper>
       </v-col>
-      <v-col cols="3"></v-col>
+      <v-col cols="3" />
     </v-row>
   </v-container>
 </template>
