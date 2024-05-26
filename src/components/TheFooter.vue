@@ -3,7 +3,7 @@ import { availableLocales, loadLanguageAsync } from '~/modules/i18n'
 
 const { t, locale } = useI18n()
 
-async function toggleLocales() {
+async function toggleLocales () {
   // change to some real logic
   const locales = availableLocales
   const newLocale = locales[(locales.indexOf(locale.value) + 1) % locales.length]
@@ -27,7 +27,7 @@ async function toggleLocales() {
     </a>
 
     <RouterLink icon-btn to="/about" :title="t('button.about')" data-test-id="about">
-      <div i-carbon-dicom-overlay />
+      <div i-carbon-overlay />
     </RouterLink>
 
     <a icon-btn rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">

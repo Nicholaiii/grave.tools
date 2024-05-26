@@ -7,8 +7,8 @@ import { Schools } from '~/mechanics/schools'
 import { InvalidFormError } from '~/stores/errors'
 
 type Input = { name: string, school: School }
-const props = defineProps<{
-  name: string,
+const modelProps = defineProps<{
+  name: string
   school: School | undefined
 }>()
 
@@ -17,7 +17,7 @@ const emit = defineEmits<{
   (e: 'update:school', v: School): void
   (e: 'validate', v: boolean): void
 }>()
-const { name, school } = useVModels(props, emit)
+const { name, school } = useVModels(modelProps, emit)
 
 const { t } = useI18n()
 const errorStore = useErrorStore()
@@ -38,7 +38,6 @@ const rules = [
       Effect.catchTag('ParseError', e => Effect.succeed(e.message)),
     )),
 ]
-
 
 const submit = () => {
   const validateFormState = (): Effect.Effect<Input, InvalidFormError> => get(valid)
@@ -74,7 +73,15 @@ const submit = () => {
           :label="t('warband.school')"
           :items="schools"
           :rules
-        />
+        >
+          <template #item="{ item, props }">
+            <v-list-item v-bind="props">
+              <template #prepend>
+                <SchoolIcon :school="item.title as School" />
+              </template>
+            </v-list-item>
+          </template>
+        </v-select>
       </v-card-text>
     </v-form>
   </v-card>

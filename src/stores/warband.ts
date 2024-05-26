@@ -1,5 +1,5 @@
 import { get, set } from '@vueuse/core'
-import { Brand, Effect, Option, pipe } from 'effect'
+import { Brand, Effect, pipe } from 'effect'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { ulid } from 'ulid'
 import type { School } from '~/mechanics/schools'

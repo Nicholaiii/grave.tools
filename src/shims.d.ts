@@ -1,4 +1,4 @@
-declare interface Window {
+declare type Window = {
   // extend the window
 }
 
