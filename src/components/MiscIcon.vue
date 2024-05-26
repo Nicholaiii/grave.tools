@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import GoldCrowns from '~/icons/misc/gold-crown.vue'
+import money from '~/icons/misc/money.vue'
 
-type miscIcons = 'gc'
+type miscIcons = 'gc' | 'money'
 
 defineProps<{
   as: miscIcons
@@ -10,6 +11,7 @@ defineProps<{
 
 const icons: Record<miscIcons, any> = {
   gc: GoldCrowns,
+  money,
 }
 </script>
 

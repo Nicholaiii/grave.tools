@@ -55,7 +55,7 @@ watch(smAndDown, (v) => {
         </v-col>
         <v-spacer />
         <v-col v-if="step > 2" cols="2">
-          {{ gc }} <MiscIcon as="gc" color="amber" />
+          {{ gc }} <MiscIcon as="money" color="amber" />
         </v-col>
       </v-row>
     </v-card-subtitle>
