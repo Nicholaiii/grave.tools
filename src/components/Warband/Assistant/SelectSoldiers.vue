@@ -37,6 +37,15 @@ const buy = (soldier: Soldier) => {
   const unit: Soldier = structuredClone(soldier)
   set(soldiers, [...units, unit])
 }
+
+const refund = (index: number) => {
+  const balance = get(gc)
+  const units = get(soldiers)
+  const soldier = units[index]
+
+  set(soldiers, units.filter((u, i) => i !== index))
+  set(gc, balance + soldier.cost)
+}
 </script>
 
 <template>
@@ -52,6 +61,7 @@ const buy = (soldier: Soldier) => {
             :key="i"
             :title="soldier.name"
             :value="i"
+            @click="refund(i)"
           />
         </v-list>
       </v-col>

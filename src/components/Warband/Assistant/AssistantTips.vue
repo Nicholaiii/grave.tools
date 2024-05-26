@@ -20,6 +20,7 @@ const spellTips = [
 const soldierTips = [
   'Recruit up to 8 soldiers',
   'You start with 400 gold crowns',
+  'You may have up to 4 specialists',
 ]
 
 const visible = ref(true)
