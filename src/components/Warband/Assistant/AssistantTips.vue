@@ -6,21 +6,29 @@ const { step } = defineProps<{
   name?: string
   school?: School
 }>()
+
+const spellTips = [
+  'Pick 3 spells from your own school',
+  'Pick 3 spells from aligned schools',
+  'Pick 2 spells from neutral schools',
+]
 </script>
 
 <template>
   <v-card>
     <v-card-title>Creating your warband: ({{ step }})</v-card-title>
     <v-card-subtitle v-if="name && school && step > 1">
-      {{ name }} the {{ school }}
+      <SchoolIcon :school /> {{ name }} the {{ school }}
     </v-card-subtitle>
     <v-container v-if="step === 1">
-      Give your wizard a name, and select a school
+      <div class="pa-2">
+        Give your wizard a name, and select a school
+      </div>
     </v-container>
     <v-container v-if="step === 2">
-      <p>- Pick 3 spells from your own school</p>
-      <p>- Pick 3 spells from aligned schools</p>
-      <p>- Pick 2 spells from neutral schools</p>
+      <div v-for="(tip, key) in spellTips" :key class="pa-2">
+        {{ tip }}
+      </div>
     </v-container>
   </v-card>
 </template>
