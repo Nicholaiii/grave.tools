@@ -3,6 +3,8 @@ import { get } from '@vueuse/core'
 import { Match } from 'effect'
 import { VStepper } from 'vuetify/components'
 import type { School } from '~/mechanics/schools'
+import type { Soldier } from '~/mechanics/soldier/model'
+import type { Spell } from '~/mechanics/spell'
 
 defineOptions({
   name: 'IndexPage',
@@ -49,6 +51,13 @@ const onValidateWizard = onValidate(1)
  * Select spells
  */
 const onValidateSpells = onValidate(2)
+const spells = ref<Spell[]>([])
+/**
+ * Select soldiers
+ */
+const gc = ref<number>(400)
+const soldiers = ref<Soldier[]>([])
+
 /**
  * ???: Stepper logic
  */
@@ -91,7 +100,7 @@ const prev = () => matchStep().pipe(
   <v-container fluid>
     <v-row align-content="center" justify="center">
       <v-col md="3" sm="12">
-        <AssistantTips :step="currentStep" :name :school />
+        <AssistantTips :step="currentStep" :name :school :gc />
       </v-col>
       <v-col md="6" sm="12">
         <VStepper ref="stepper" v-model="currentStep">
@@ -118,7 +127,11 @@ const prev = () => matchStep().pipe(
             </v-stepper-window-item>
 
             <v-stepper-window-item key="2-content" :value="2">
-              <SelectSpells :school @validate="onValidateSpells" />
+              <SelectSpells v-model:spells="spells" :school @validate="onValidateSpells" />
+            </v-stepper-window-item>
+
+            <v-stepper-window-item key="3-content" :value="3">
+              <SelectSoldiers v-model:gc="gc" v-model:soldiers="soldiers" />
             </v-stepper-window-item>
           </v-stepper-window>
 

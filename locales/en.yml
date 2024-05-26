@@ -4,6 +4,7 @@ button:
   go: GO
   next: Next
   home: Home
+  settings: Settings
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
   close: Close
@@ -36,3 +37,5 @@ warband:
   items: Items
   wizard-name: Wizard name
   school: School
+  standard: Standard
+  specialist: Specialist

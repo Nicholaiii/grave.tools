@@ -11,6 +11,7 @@ declare module 'vue' {
     AppSnackBar: typeof import('./components/Layout/AppSnackBar.vue')['default']
     AssistantTips: typeof import('./components/Warband/Assistant/AssistantTips.vue')['default']
     CreateWizard: typeof import('./components/Warband/Assistant/CreateWizard.vue')['default']
+    MiscIcon: typeof import('./components/MiscIcon.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SchoolIcon: typeof import('./components/Warband/SchoolIcon.vue')['default']

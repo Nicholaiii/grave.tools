@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { get } from '@vueuse/core'
+import { get, set } from '@vueuse/core'
 import type { Alignment, School } from '~/mechanics/schools'
 import { Alignments } from '~/mechanics/schools'
 import type { Spell } from '~/mechanics/spell'
@@ -7,10 +7,16 @@ import { Spells } from '~/mechanics/spell'
 
 const props = defineProps<{
   school?: School
+  spells: Spell[]
 }>()
+
 const emit = defineEmits<{
+  (e: 'update:spells', v: Spell[]): void
   (e: 'validate', v: boolean): void
 }>()
+
+const spells = useVModel(props, 'spells', emit)
+
 const { t } = useI18n()
 const valid = ref<boolean>(false)
 const alignedActive = ref<boolean>(false)
@@ -18,6 +24,12 @@ const alignedActive = ref<boolean>(false)
 const own = ref<Spell[]>([])
 const aligned = ref<Spell[]>([])
 const neutral = ref<Spell[]>([])
+
+watch([own, aligned, neutral], () => set(spells, [
+  ...get(own),
+  ...get(aligned),
+  ...get(neutral),
+]))
 
 const withAlignment = (a: Alignment) => ([,alignment]: [any, Alignment]) => alignment === a
 const pickSchool = ([school]: [string, any]) => school as School
@@ -78,6 +90,7 @@ const itemProps = (item: Spell) => ({
           clearable
           return-object
           chips
+          closable-chips
           multiple
           counter="3"
           persistent-counter
@@ -94,6 +107,7 @@ const itemProps = (item: Spell) => ({
           clearable
           return-object
           chips
+          closable-chips
           multiple
           counter="3"
           persistent-counter
@@ -111,6 +125,7 @@ const itemProps = (item: Spell) => ({
           clearable
           return-object
           chips
+          closable-chips
           multiple
           counter="2"
           persistent-counter

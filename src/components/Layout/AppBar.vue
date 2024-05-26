@@ -1,33 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { t } = useI18n()
+</script>
 
 <template>
   <v-app-bar flat>
-    <v-container class="d-flex align-center mx-auto justify-center">
-      <v-avatar
-        class="me-4"
-        color="grey-darken-1"
-        size="32"
-      />
-
-      <!-- <v-btn
-        v-for="link in links"
-        :key="link"
-        :text="link"
-        variant="text"
-      /> -->
-
+    <v-app-bar-nav-icon />
+    <v-avatar
+      class="ms-2"
+      variant="flat"
+      image="favicon.svg"
+    />
+    <v-app-bar-title>Grave Tools</v-app-bar-title>
+    <v-container class="d-flex align-center justify-left">
       <v-spacer />
 
       <v-responsive max-width="160">
-        <v-text-field
-          density="compact"
-          label="Search"
-          rounded="lg"
-          variant="solo-filled"
-          flat
-          hide-details
-          single-line
-        />
+        <v-btn prepend-icon="mdi-cog">
+          {{ t('button.settings') }}
+        </v-btn>
       </v-responsive>
     </v-container>
   </v-app-bar>
