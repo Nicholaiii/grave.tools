@@ -90,10 +90,10 @@ const prev = () => matchStep().pipe(
 <template>
   <v-container fluid>
     <v-row align-content="center" justify="center">
-      <v-col cols="3">
+      <v-col md="3" sm="12">
         <AssistantTips :step="currentStep" :name :school />
       </v-col>
-      <v-col cols="6">
+      <v-col md="6" sm="12">
         <VStepper ref="stepper" v-model="currentStep">
           <v-stepper-header>
             <template v-for="n in steps" :key="n">
