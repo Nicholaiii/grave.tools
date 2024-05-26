@@ -2,7 +2,10 @@
   "version": "0.2",
   "ignorePaths": [
     "pnpm-lock.yaml",
-    "src/components.d.ts"
+    "src/components.d.ts",
+    "src/auto-imports.d.ts",
+    "src/typed-router.d.ts",
+    "*.svg"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [
@@ -16,13 +19,16 @@
   ],
   "words": [
     "antfu",
+    "buildx",
     "Chronomancer",
     "composables",
+    "corepack",
     "demi",
     "Elementalist",
     "Frostgrave",
     "iconify",
     "intlify",
+    "materialdesignicons",
     "nprogress",
     "pinia",
     "pnpm",
