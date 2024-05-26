@@ -44,8 +44,6 @@ const complete = (step: Steps) => assistant[step].complete = true
 const name = ref<string>('')
 const school = ref<School>()
 const onValidateWizard = onValidate(1)
-const _createWizard = (_input: { name: string, school: School }) => {
-}
 
 /**
  * Select spells
