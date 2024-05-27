@@ -18,9 +18,7 @@ const { gc, soldiers } = useVModels(modelProps, emit)
 
 const { t } = useI18n()
 
-const standard = Object.values(Soldiers.all).filter(soldier => !soldier.specialist).toSorted((a, b) => a.cost - b.cost)
-const specialists = Object.values(Soldiers.all).filter(soldier => soldier.specialist)
-
+const allSoldiers = Object.values(Soldiers.all).toSorted((a, b) => a.cost - b.cost)
 const buy = (soldier: Soldier) => {
   const balance = get(gc)
   const units = get(soldiers)
@@ -50,10 +48,11 @@ const refund = (index: number) => {
 
 <template>
   <v-card flat>
-    <v-row>
-      <v-col cols="6">
+    <v-row no-gutters>
+      <v-col cols="4">
         <p class="text-h6">
           {{ t('warband.soldiers') }}
+          <span class="text-disabled text-subtitle-2">({{ soldiers.length }}/8)</span>
         </p>
         <v-list density="comfortable">
           <v-list-item
@@ -65,8 +64,34 @@ const refund = (index: number) => {
           />
         </v-list>
       </v-col>
-      <v-col cols="6">
-        <p class="text-h6">
+
+      <v-col cols="8">
+        <v-row no-gutters>
+          <v-col
+            v-for="(soldier, key) in allSoldiers"
+            :key
+            cols="6"
+            md="4"
+          >
+            <v-card
+              ripple
+              color="primary"
+              variant="tonal"
+              class="ma-1"
+              @click="buy(soldier)"
+            >
+              <v-card-title> <misc-icon as="gc" color="amber" /> {{ soldier.cost }}</v-card-title>
+              <v-card-subtitle>
+                {{ soldier.specialist ? t('warband.specialist') : t('warband.standard') }}
+              </v-card-subtitle>
+              <v-card-text class="pt-0">
+                {{ soldier.name }}
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+
+        <!--    <p class="text-h6">
           {{ t('warband.standard') }}
         </p>
 
@@ -91,6 +116,7 @@ const refund = (index: number) => {
         <p class="text-h6">
           {{ t('warband.specialist') }}
         </p>
+
         <v-list density="comfortable">
           <v-list-item
             v-for="(soldier, key) in specialists"
@@ -107,7 +133,7 @@ const refund = (index: number) => {
               </v-col>
             </v-row>
           </v-list-item>
-        </v-list>
+        </v-list> -->
       </v-col>
     </v-row>
   </v-card>
