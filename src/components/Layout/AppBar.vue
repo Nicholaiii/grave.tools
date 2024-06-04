@@ -15,7 +15,7 @@ const build = import.meta.env.VITE_BUILD_VERSION
     <v-app-bar-title>Grave Tools</v-app-bar-title>
     <v-container class="d-flex align  -center justify-left">
       <v-responsive v-if="build" class="text-disabled">
-        <v-btn prepend-icon="mdi-git">
+        <v-btn prepend-icon="mdi-git" href="https://github.com/Nicholaiii/grave.tools" target="_blank">
           {{ build }}
         </v-btn>
       </v-responsive>
