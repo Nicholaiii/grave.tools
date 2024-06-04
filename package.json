@@ -2,7 +2,7 @@
   "name": "grave.tools",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.1.4",
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 3333 --open",
