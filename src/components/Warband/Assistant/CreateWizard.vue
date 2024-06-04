@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as S from '@effect/schema/Schema'
-import { get } from '@vueuse/core'
+import { get, set } from '@vueuse/core'
 import { Effect, pipe } from 'effect'
 import type { School } from '~/mechanics/schools'
 import { Schools } from '~/mechanics/schools'
@@ -17,8 +17,9 @@ const emit = defineEmits<{
   (e: 'update:school', v: School): void
   (e: 'validate', v: boolean): void
 }>()
-const { name, school } = useVModels(modelProps, emit)
 
+const { name, school } = useVModels(modelProps, emit)
+const randomName = () => set(name, getName())
 const { t } = useI18n()
 const errorStore = useErrorStore()
 const schools = Object.keys(Schools).toSorted()
@@ -66,6 +67,8 @@ const submit = () => {
           v-model="name"
           :label="t('warband.wizard-name')"
           :rules
+          append-inner-icon="mdi-dice-multiple"
+          @click:append-inner="randomName"
         />
 
         <v-select
