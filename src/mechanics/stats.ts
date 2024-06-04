@@ -1,5 +1,7 @@
 import * as S from '@effect/schema/Schema'
 
+export const Stat = S.Literal('move', 'fight', 'shoot', 'will', 'armor', 'health')
+
 export const Stats = S.Struct({
   move: S.Number,
   fight: S.Number,
