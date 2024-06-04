@@ -54,6 +54,9 @@ const refund = (index: number) => {
           {{ t('warband.soldiers') }}
           <span class="text-disabled text-subtitle-2">({{ soldiers.length }}/8)</span>
         </p>
+        <p v-show="soldiers.length > 0" class="text-disabled text-subtitle-2">
+          (click to refund)
+        </p>
         <v-list density="comfortable">
           <v-list-item
             v-for="(soldier, i) in soldiers"
