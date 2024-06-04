@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
+
+const build = import.meta.env.VITE_BUILD_VERSION
 </script>
 
 <template>
@@ -11,7 +13,12 @@ const { t } = useI18n()
       image="favicon.svg"
     />
     <v-app-bar-title>Grave Tools</v-app-bar-title>
-    <v-container class="d-flex align-center justify-left">
+    <v-container class="d-flex align  -center justify-left">
+      <v-responsive v-if="build" class="text-disabled">
+        <v-btn prepend-icon="mdi-git">
+          {{ build }}
+        </v-btn>
+      </v-responsive>
       <v-spacer />
 
       <v-responsive max-width="160">
