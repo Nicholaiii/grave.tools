@@ -7,6 +7,7 @@ describe('Wizard', () => {
   it('allows for creation of apprentice entities', () => {
     const details: Apprentice.Apprentice = {
       name: 'Nerd',
+      inventory: { items: [], limit: 4 },
       stats: {
         armor: 1,
         fight: 1,

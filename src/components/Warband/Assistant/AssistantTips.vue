@@ -55,7 +55,14 @@ watch(smAndDown, (v) => {
         </v-col>
         <v-spacer />
         <v-col v-if="step > 2" cols="2">
-          {{ gc }} <MiscIcon as="money" color="amber" />
+          <v-sheet
+            :elevation="2"
+            color="blue-grey-darken-3"
+            rounded
+            class="pa-1 pl-2"
+          >
+            {{ gc }} <MiscIcon as="money" color="amber" />
+          </v-sheet>
         </v-col>
       </v-row>
     </v-card-subtitle>

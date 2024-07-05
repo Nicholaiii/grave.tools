@@ -8,3 +8,8 @@ export const Item = S.Struct({
   bonuses: S.Array(Bonus),
   notes: S.optional(S.String),
 })
+
+export const Inventory = S.Struct({
+  items: S.Array(Item),
+  limit: S.NonNegative,
+})

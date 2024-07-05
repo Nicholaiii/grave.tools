@@ -10,6 +10,7 @@ describe('Wizard', () => {
       name: 'Hairy',
       school: 'Chronomancer',
       spells: [],
+      inventory: { limit: 5, items: [] },
       stats: {
         armor: 1,
         fight: 1,

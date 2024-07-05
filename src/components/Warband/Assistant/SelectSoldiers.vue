@@ -18,22 +18,28 @@ const { gc, soldiers } = useVModels(modelProps, emit)
 
 const { t } = useI18n()
 
-const allSoldiers = Object.values(Soldiers.all).toSorted((a, b) => a.cost - b.cost)
-const buy = (soldier: Soldier) => {
+const canPurchase = (soldier: Soldier) => {
   const balance = get(gc)
   const units = get(soldiers)
-  if (
-    false // Not enough money
-    || (balance < soldier.cost)
-    // Party full
-    || (units.length >= 8)
+
+  return (
+    true // Has enough money
+    && (balance >= soldier.cost)
+    // Party not full
+    && (units.length < 8)
     // Max 4 specialists
-    || (soldier.specialist && units.filter(u => u.specialist).length >= 4)
-  ) return false
+    && (soldier.specialist ? units.filter(u => u.specialist).length < 4 : true)
+  )
+}
+
+const allSoldiers = Object.values(Soldiers.all).toSorted((a, b) => a.cost - b.cost)
+const buy = (soldier: Soldier) => {
+  if (!canPurchase(soldier))
+    return false
   set(gc, get(gc) - soldier.cost)
 
   const unit: Soldier = structuredClone(soldier)
-  set(soldiers, [...units, unit])
+  set(soldiers, [...get(soldiers), unit])
 }
 
 const refund = (index: number) => {
@@ -78,9 +84,11 @@ const refund = (index: number) => {
           >
             <v-card
               ripple
-              color="primary"
+              :color="canPurchase(soldier) ? 'primary' : 'blue-grey-darken-2'"
               variant="tonal"
               class="ma-1"
+              :disabled="!canPurchase(soldier)"
+
               @click="buy(soldier)"
             >
               <v-card-title> <misc-icon as="gc" color="amber" /> {{ soldier.cost }}</v-card-title>
@@ -93,50 +101,6 @@ const refund = (index: number) => {
             </v-card>
           </v-col>
         </v-row>
-
-        <!--    <p class="text-h6">
-          {{ t('warband.standard') }}
-        </p>
-
-        <v-list density="comfortable">
-          <v-list-item
-            v-for="(soldier, key) in standard"
-            :key
-            :value="soldier"
-            @click="buy(soldier)"
-          >
-            <v-row>
-              <v-col cols="3">
-                <misc-icon as="gc" color="amber" /> {{ soldier.cost }}
-              </v-col>
-              <v-col cols="9">
-                {{ soldier.name }}
-              </v-col>
-            </v-row>
-          </v-list-item>
-        </v-list>
-
-        <p class="text-h6">
-          {{ t('warband.specialist') }}
-        </p>
-
-        <v-list density="comfortable">
-          <v-list-item
-            v-for="(soldier, key) in specialists"
-            :key
-            :value="soldier"
-            @click="buy(soldier)"
-          >
-            <v-row>
-              <v-col cols="3">
-                <misc-icon as="gc" color="amber" /> {{ soldier.cost }}
-              </v-col>
-              <v-col cols="9">
-                {{ soldier.name }}
-              </v-col>
-            </v-row>
-          </v-list-item>
-        </v-list> -->
       </v-col>
     </v-row>
   </v-card>
