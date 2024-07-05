@@ -60,7 +60,7 @@ const submit = () => {
     <v-form
       v-model="valid"
       @submit.prevent="submit"
-      @update:model-value="v => emit('validate', v ?? false)"
+      @update:model-value="(v: boolean) => emit('validate', v ?? false)"
     >
       <v-card-text>
         <v-text-field

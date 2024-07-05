@@ -81,7 +81,7 @@ const itemProps = (item: Spell) => ({
       <v-form
         v-model="valid"
         @submit.prevent
-        @update:model-value="v => emit('validate', v ?? false)"
+        @update:model-value="(v: boolean) => emit('validate', v ?? false)"
       >
         <v-select
           v-model="own"
@@ -115,7 +115,7 @@ const itemProps = (item: Spell) => ({
           :rules="[
             () => alignedActive || aligned.length === 3 || `Select 3 aligned spells`,
           ]"
-          @update:menu="v => alignedActive = v"
+          @update:menu="(v: boolean) => alignedActive = v"
         />
 
         <v-select
