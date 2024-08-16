@@ -9,7 +9,11 @@ export const Item = S.Struct({
   notes: S.optional(S.String),
 })
 
+export type Item = typeof Item.Type
+
 export const Inventory = S.Struct({
   items: S.Array(Item),
   limit: S.NonNegative,
 })
+
+export type Inventory = typeof Inventory.Type
