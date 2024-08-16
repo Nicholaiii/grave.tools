@@ -2,6 +2,7 @@ import { get, set } from '@vueuse/core'
 import { Brand, Effect, pipe } from 'effect'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { ulid } from 'ulid'
+import { Apprentice, deriveStats } from '~/mechanics/apprentice'
 import type { School } from '~/mechanics/schools'
 import { Warband } from '~/mechanics/warband'
 import { Wizard } from '~/mechanics/wizard'
@@ -18,13 +19,14 @@ const generateId = Effect.try({
   catch: cause => new GenIdError('Id creation failed', ({ cause })),
 })
 
-const createWarband = (wizard: Wizard): Warband => Warband.make({ wizard })
 const _initialiseWarband = (name: string, school: School) => pipe(
   Effect.Do,
   Effect.bind('id', () => generateId),
-  Effect.let('warband', () => pipe(
-    Wizard.make({ name, school }),
-    createWarband,
+  Effect.bind('warband', (): Effect.Effect<Warband> => pipe(
+    Effect.Do,
+    Effect.let('wizard', () => Wizard.make({ name, school })),
+    Effect.let('apprentice', ({ wizard }) => Apprentice.make({ name: `${name}'s Apprentice`, stats: deriveStats(wizard) })),
+    Effect.map(({ apprentice, wizard }) => Warband.make({ wizard, apprentice })),
   )),
 )
 
