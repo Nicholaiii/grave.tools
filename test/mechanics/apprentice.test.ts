@@ -6,6 +6,7 @@ import * as Apprentice from '~/mechanics/apprentice'
 describe('Wizard', () => {
   it('allows for creation of apprentice entities', () => {
     const details: Apprentice.Apprentice = {
+      _tag: 'Apprentice',
       name: 'Nerd',
       inventory: { items: [], limit: 4 },
       stats: {

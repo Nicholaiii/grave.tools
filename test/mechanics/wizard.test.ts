@@ -5,6 +5,7 @@ import type * as Stats from '~/mechanics/stats'
 describe('Wizard', () => {
   it('allows for creation of wizard entities', () => {
     const details: typeof Wizard.Wizard.Type = {
+      _tag: 'Wizard',
       experience: 123,
       level: 1234,
       name: 'Hairy',
