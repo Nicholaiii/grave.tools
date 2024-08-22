@@ -4,7 +4,7 @@ import type * as Wizard from './wizard'
 import * as Stats from './stats'
 import { Inventory } from './item/model'
 
-export const Apprentice = S.Struct({
+export const Apprentice = S.TaggedStruct('Apprentice', {
   name: S.NonEmpty,
   stats: Stats.Stats,
 

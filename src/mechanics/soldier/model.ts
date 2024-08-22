@@ -1,7 +1,7 @@
 import * as S from '@effect/schema/Schema'
 import { Stats } from '../stats'
 
-export const Soldier = S.Struct({
+export const Soldier = S.TaggedStruct('Soldier', {
   name: S.NonEmpty,
   stats: Stats,
   cost: S.NonNegative,

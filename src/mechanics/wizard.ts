@@ -4,7 +4,7 @@ import * as Stats from './stats'
 import * as Spell from './spell'
 import { Inventory } from './item/model'
 
-export const Wizard = S.Struct({
+export const Wizard = S.TaggedStruct('Wizard', {
   name: S.NonEmpty,
   school: Schools.Enum,
   stats: S.optional(Stats.Stats, { default: () => Stats.of(6, 2, 0, 10, 4, 14) }),
